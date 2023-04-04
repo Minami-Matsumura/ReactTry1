@@ -10,9 +10,11 @@ export const App = () => {
 
   // inputの値を使用する場合の定型文（onChangeとonChange関数）
   const onChangeTodoText = (event) => setTodoText(event.target.value); //event（input）で実際に入力された値
-
   const onClickAdd = () => {
-    alert(todoText);
+    if (todoText === "") return; //空白の時は何も起こらないようにする
+    const newTodos = [...incompleteTodos, todoText]; //配列~~の要素を丸ごとコピー「...~~」
+    setIncompleteTodos(newTodos);
+    setTodoText("");
   };
 
   return (
