@@ -16,10 +16,18 @@ export const App = () => {
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
+  const onClickDelete = (index) => {
+    // 参照を引き継がずに配列を生成する
+    const newTodos = [...incompleteTodos];
+    // 第一引数番目の要素から第二引数個削除する
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos);
+  };
 
   return (
     <>
       <div className="input-area">
+        {/* onChangeで変更時の仕様を定義 */}
         <input
           placeholder="TODOを入力"
           value={todoText}
@@ -32,12 +40,13 @@ export const App = () => {
         <ul>
           {/* jsだから{} */}
           {/* mapを使ってレンダリングする場合、key設定が必要 */}
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>完了</button>
-                <button>削除</button>
+                {/* onClickに引数を設定する場合、アロー関数として記述する */}
+                <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             );
           })}
