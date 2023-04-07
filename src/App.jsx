@@ -1,3 +1,4 @@
+// jsでは-は使わずキャメルケースで書く
 import React, { useState } from "react";
 import "./styles.css";
 // default exportではなくexportなので{}が必要
@@ -55,10 +56,7 @@ export const App = () => {
         onClickComplete={onClickComplete}
         onClickDelete={onClickDelete}
       />
-      <CompleteTodos 
-      todos={completeTodos} 
-      onClick={onClickBack} 
-      />
+      <CompleteTodos todos={completeTodos} onClick={onClickBack} />
       <div></div>
     </>
   );
